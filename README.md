@@ -40,6 +40,7 @@ Builds an AEgir environment and site on top of a Vagrant vm.
 ## TODO
 
 * Consider using an existing aegir cookbook.
+* Add http://drupal.org/project/hosting_queue_runner
 
 --------------------------------------------------------------------- 
 Maintained by [xforty technologies](http://www.xforty.com)
