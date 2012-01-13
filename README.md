@@ -37,5 +37,9 @@ Builds an AEgir environment and site on top of a Vagrant vm.
         host$ vagrant ssh
         guest$ sudo su - aegir
 
+## TODO
+
+* Consider using an existing aegir cookbook.
+
 --------------------------------------------------------------------- 
 Maintained by [xforty technologies](http://www.xforty.com)
