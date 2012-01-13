@@ -4,7 +4,7 @@ Builds an AEgir environment and site on top of a Vagrant vm.
 
 ## REQUIREMENTS
 
-* [This project's source](https://github.com/xforty/vagrant-drupal)
+* [This project's source](https://github.com/xforty/vagrant-aegir)
 * Not windows (haven't tested it yet, but you can try)
 * Ruby >= 1.9.2 (do yourself a favor and use
   [rvm](http://beginrescueend.com/) to manage your ruby environment)
