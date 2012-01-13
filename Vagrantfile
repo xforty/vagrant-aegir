@@ -25,18 +25,16 @@ Vagrant::Config.run do |config|
   # Use host-only networking. Sets the VM's private IP address.
   # Un-comment this line to use.  Make sure port-forwarding is
   # commented out. Requires you to edit your /etc/hosts file to
-  # add the line: "172.21.21.21   local.drupal". Do so at your
-  # own risk.  Site will then available at http://local.drupal
+  # add the line: "172.21.21.21   local.aegir". Do so at your
+  # own risk.  Site will then available at http://local.aegir
   #
   # config.vm.network "172.21.21.21"
 
+  # 
+  # Un-comment this line if you want host-only networking.
   #
-  # Create /srv if it doesn't exist and share with VM.
-  # The /srv path is owned by www-data so apache can write to it.
-  #
-  srv_path = File.expand_path(File.dirname(__FILE__)) + "/srv"
-  if !File::directory?(srv_path) then Dir::mkdir(srv_path) end
-  config.vm.share_folder("srv", "/srv", srv_path, :owner => "www-data", :group => "www-data")
+  # config.vm.host_name = "local.aegir"
+  config.vm.host_name = "localhost"
 
   #
   # Provision a new VM using chef-solo. The librarian gem controls
@@ -44,47 +42,8 @@ Vagrant::Config.run do |config|
   # site-specific cookbooks, place them in "site-cookbooks".
   #
   config.vm.provision :chef_solo do |chef|
-    #chef.log_level = :debug
     chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
     chef.add_recipe "xforty"
-    chef.add_recipe "drupal"
-    chef.add_recipe "initdb"
-  
-    # Specify custom JSON node attributes:
-    chef.json.merge!(
-      :drupal => {
-        :project_name => "drupal",
-        # Comment out server_name if you are using host-only networking.
-        :server_name => "localhost"
-      },
-      :drush => {
-        :version => "5.0.0"
-      },
-      :mysql => {
-        :server_root_password => "root"
-      },
-      :initdb => {
-        :mysql => {
-          :connection => {
-            :username => "root",
-            :password => "root",
-            :host     => "localhost"
-          },
-          :databases => {
-            "drupal" => {
-              :action => :create
-            }
-          },
-          :users => {
-            "dbuser" => {
-              :action        => :grant,
-              :database_name => "drupal",
-              :host          => "localhost",
-              :password      => "password"
-            }
-          }
-        }
-      }
-    )
+    chef.add_recipe "aegir"
   end
 end
