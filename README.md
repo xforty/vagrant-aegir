@@ -32,10 +32,16 @@ Builds an AEgir environment and site on top of a Vagrant vm.
 
         http://localhost:4567/user/reset/1/1326478208/3ce5671f68069a2807136c47ae6042c9
 
+   NOTE: You should change your email address.
+
 3. You can login the guest and sudo to aegir
 
         host$ vagrant ssh
         guest$ sudo su - aegir
+
+4. If you add a site called domain.dom you need to add the following to your `/etc/hosts` file in order to access the site.
+
+    127.0.0.1 domain.dom
 
 ## TODO
 
