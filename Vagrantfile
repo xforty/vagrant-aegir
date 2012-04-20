@@ -19,7 +19,7 @@ Vagrant::Config.run do |config|
   # Use port-forwarding. Web site will be at http://localhost:4567
   # Forwards guest port 80 to host port 4567 and name the mapping "web".
   #
-  config.vm.forward_port("web", 80, 4567, :auto => true)
+  config.vm.forward_port 80, 4567, :auto => true
 
   #
   # Use host-only networking. Sets the VM's private IP address.
